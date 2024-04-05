@@ -1,31 +1,45 @@
 package Leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class Leetcode205 {
 
-	static public boolean isIsomorphic(String s, String t) {
+	public boolean isIsomorphic(String s, String t) {
 		if(s.length()!=t.length())
             return false;
-        Map<Character, Character> replace = new HashMap<>();
+        int[] frqS = new int[127];
+        int[] frqT = new int[127];
         for(int i =0; i<s.length();i++){
-            if(!replace.containsKey(s.charAt(i)) &&
-                    !replace.containsKey(t.charAt(i))){
-                replace.put(s.charAt(i), t.charAt(i));
-            } else{
-                if(s.charAt(i) != (replace.get(t.charAt(i))) ||
-                        t.charAt(i) != (replace.get(s.charAt(i)))){
-                    return false;
-                }
-            }
+           if(frqS[s.charAt(i)] != frqT[t.charAt(i)])
+        	   return false;
+           frqS[s.charAt(i)] = i+1;
+           frqT[t.charAt(i)] = i+1;
         }
         return true;
     }
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Leetcode205 obj = new Leetcode205();
+		System.out.println(obj.isIsomorphic("badc", "baba"));
 	}
 
 }
+
+/*
+Isomorphic Strings
+
+Given two strings s and t, determine if they are isomorphic.
+
+Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+
+All occurrences of a character must be replaced with another character while preserving the order of characters. 
+No two characters may map to the same character, but a character may map to itself.
+
+Input: s = "egg", t = "add"
+Output: true
+
+Input: s = "foo", t = "bar"
+Output: false
+
+Input: s = "paper", t = "title"
+Output: true
+*/
