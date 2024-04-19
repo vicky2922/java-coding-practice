@@ -1,4 +1,4 @@
-package Leetcode;
+package Leetcode.april24;
 
 public class April19_200 {
 
