@@ -18,16 +18,12 @@ public class May4_881 {
         int boats = 0;
         while(l<=r) {
         	if(people[l]+people[r]<=limit) {
-        		boats++;
         		l++;
-        		r--;
-        	} else {
-        		boats++;
-        		r--;
-        	}
+        	} 
+        	boats++;
+        	r--;
         }
         return boats;
     }
-
 }
 //MEDIUM
